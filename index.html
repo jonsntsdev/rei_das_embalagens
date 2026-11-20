@@ -1,0 +1,924 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Embalagens, descartáveis e produtos de limpeza em Betim. Varejo e atacado com atendimento local.">
+  <meta property="og:title" content="Rei das Embalagens | Betim-MG">
+  <meta property="og:description" content="Tudo que o seu negócio precisa, em um só lugar.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#c62828">
+  <title>Rei das Embalagens | Embalagens e descartáveis em Betim-MG</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect rx='14' width='64' height='64' fill='%23c62828'/><text x='32' y='45' text-anchor='middle' font-size='42' fill='white'>R</text></svg>">
+  <link rel="stylesheet" href="/style.css">
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"LocalBusiness","name":"Rei das Embalagens","telephone":"+553135321493","address":{"@type":"PostalAddress","streetAddress":"Av. das Acácias, 486","addressLocality":"Betim","addressRegion":"MG","postalCode":"32673-173","addressCountry":"BR"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"08:00","closes":"15:00"}],"sameAs":["https://www.instagram.com/rei.das.embalagens/"]}
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegação principal">
+      <a class="brand" href="#inicio">Rei das <span>Embalagens</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#sobre">Sobre</a><a href="#produtos">Produtos</a><a href="#galeria">Galeria</a>
+        <a href="#como-pedir">Como pedir</a><a href="#localizacao">Localização</a>
+        <button class="button button-light" id="openAuth">Entrar</button>
+        <button class="button button-light" id="openAccount" hidden>Minha conta</button>
+        <button class="button button-dark" id="openCart">Meu pedido <span class="badge" id="cartCount">0</span></button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-content">
+        <p class="eyebrow">Embalagens e descartáveis em Betim</p>
+        <h1>Tudo que o seu negócio <span>precisa.</span></h1>
+        <p class="hero-copy">Variedade em um só lugar, atendimento local e opções para varejo e atacado.</p>
+        <div class="button-row">
+          <a class="button button-primary" href="#produtos">Ver produtos</a>
+          <a class="button button-light" href="https://wa.me/553135321493" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="container reveal">
+        <p class="eyebrow">Sobre a empresa</p>
+        <h2 class="section-title">Praticidade para sua rotina.</h2>
+        <p class="section-copy">A Rei das Embalagens atende lojistas, confeiteiras, lanchonetes, restaurantes, empresas e consumidores finais de Betim e região.</p>
+        <div class="feature-grid">
+          <article class="feature-card"><span class="feature-icon" aria-hidden="true">★</span><h3>Avaliação local</h3><p class="rating"><strong>4,6</strong> / 5</p><p class="muted">220 avaliações no Google</p></article>
+          <article class="feature-card"><span class="feature-icon" aria-hidden="true">▦</span><h3>Variedade em um só lugar</h3><p class="muted">Embalagens e descartáveis para sua casa ou empresa.</p></article>
+          <article class="feature-card"><span class="feature-icon" aria-hidden="true">A</span><h3>Acessibilidade</h3><p class="muted">Entrada e estacionamento acessíveis a cadeirantes.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted" id="produtos">
+      <div class="container reveal">
+        <p class="eyebrow">Catálogo</p>
+        <h2 class="section-title">Encontre o essencial.</h2>
+        <p class="section-copy">Confirme a disponibilidade pelo WhatsApp ou telefone. Para compras em quantidade e atacado, consulte a loja.</p>
+        <div class="catalog-tools">
+          <label class="sr-only" for="searchProducts">Buscar produtos</label>
+          <input class="field" id="searchProducts" type="search" placeholder="Buscar copos, caixas, sacolas...">
+          <label class="select-label" for="sortProducts">Ordenar</label>
+          <select class="field" id="sortProducts">
+            <option value="nome">Nome</option><option value="preco_asc">Menor preço</option><option value="preco_desc">Maior preço</option>
+          </select>
+          <label class="check-label"><input id="availableOnly" type="checkbox"> Só disponíveis</label>
+        </div>
+        <div class="category-chips" id="categories" aria-label="Filtrar por categoria"></div>
+        <div class="product-grid" id="products" aria-live="polite">
+          <div class="loading-card"></div><div class="loading-card"></div><div class="loading-card"></div><div class="loading-card"></div>
+        </div>
+        <div class="center"><button class="button button-light" id="loadMore" hidden>Carregar mais</button></div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="galeria">
+      <div class="container reveal">
+        <p class="eyebrow">Fotos no Google Maps</p>
+        <h2 class="section-title">Veja a loja como ela é.</h2>
+        <p class="section-copy">Acesse o perfil oficial da loja no Google Maps para ver as fotos e avaliações publicadas.</p>
+        <div class="google-gallery">
+          <iframe title="Perfil da Rei das Embalagens no Google Maps, com fotos e avaliações" loading="lazy"
+            src="https://www.google.com/maps?q=Rei%20das%20Embalagens%20Av.%20das%20Ac%C3%A1cias%20486%20Betim%20MG&output=embed"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="google-gallery-copy">
+            <span class="feature-icon" aria-hidden="true">◎</span>
+            <h3>Fotos, avaliações e como chegar</h3>
+            <p class="muted">Abra o perfil da loja no Google Maps para ver as fotos publicadas e as informações atualizadas.</p>
+            <a class="button button-light" href="https://maps.google.com/?cid=12306457864104761008" target="_blank" rel="noopener">Ver fotos no Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="como-pedir">
+      <div class="container reveal">
+        <p class="eyebrow">Como pedir</p><h2 class="section-title">Simples em três passos.</h2>
+        <div class="steps-grid">
+          <article class="step-card"><span class="step-number">1</span><h3>Escolha</h3><p class="muted">Navegue pelo catálogo e monte seu pedido.</p></article>
+          <article class="step-card"><span class="step-number">2</span><h3>Envie</h3><p class="muted">Informe seus dados e envie pelo WhatsApp.</p></article>
+          <article class="step-card"><span class="step-number">3</span><h3>Retire</h3><p class="muted">Aguarde a confirmação e retire na loja.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted" id="localizacao">
+      <div class="container reveal">
+        <p class="eyebrow">Localização</p><h2 class="section-title">Estamos em Betim.</h2>
+        <div class="location-card">
+          <iframe title="Mapa da Rei das Embalagens" loading="lazy" src="https://www.google.com/maps?q=Av.%20das%20Ac%C3%A1cias%20486%20Betim%20MG&output=embed"></iframe>
+          <div class="location-content">
+            <h3>Av. das Acácias, 486</h3>
+            <p class="muted">Jardim das Alterosas (2ª Seção), Betim-MG<br>CEP 32673-173</p>
+            <article class="hours-status-card" id="hoursStatusCard" role="status" aria-live="polite">
+              <span class="hours-status-indicator" aria-hidden="true"></span>
+              <div class="hours-status-copy">
+                <strong id="openStatus">Calculando horário...</strong>
+                <span id="openStatusDetail">Verificando o horário de atendimento.</span>
+                <small id="todayHours"></small>
+              </div>
+            </article>
+            <p><strong>Segunda a sexta:</strong> 8h às 18h<br><strong>Sábado:</strong> 8h às 15h<br><strong>Domingo:</strong> fechado</p>
+            <a class="button button-primary" href="https://www.google.com/maps/search/?api=1&query=Av.+das+Ac%C3%A1cias+486+Betim+MG" target="_blank" rel="noopener">Abrir no Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contato">
+      <div class="container reveal">
+        <p class="eyebrow">Contato</p><h2 class="section-title">Conte com a gente.</h2>
+        <div class="contact-grid">
+          <article class="feature-card"><h3>Telefone e WhatsApp</h3><a href="tel:+553135321493">(31) 3532-1493</a></article>
+          <article class="feature-card"><h3>Instagram</h3><a href="https://www.instagram.com/rei.das.embalagens/" target="_blank" rel="noopener">@rei.das.embalagens</a></article>
+          <article class="feature-card"><h3>Pagamento</h3><p class="muted">Cartões de crédito e débito. Atendimento acessível.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><a class="brand brand-footer" href="#inicio">Rei das <span>Embalagens</span></a><p class="muted">Comércio e distribuição de embalagens e descartáveis.</p></div>
+      <div><h3>Explore</h3><a href="#sobre">Sobre</a><a href="#produtos">Produtos</a><a href="#localizacao">Localização</a></div>
+      <div><h3>Contato</h3><a href="tel:+553135321493">(31) 3532-1493</a><a href="https://wa.me/553135321493">WhatsApp</a></div>
+      <div><h3>Endereço</h3><p>Av. das Acácias, 486<br>Jardim das Alterosas, Betim-MG</p></div>
+      <p class="footer-bottom">© <span id="year"></span> Rei das Embalagens. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/553135321493" target="_blank" rel="noopener" aria-label="Falar com a loja pelo WhatsApp">◉</a>
+
+  <div class="overlay" id="cartOverlay" aria-hidden="true">
+    <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <div class="drawer-head"><h2 id="cartTitle">Seu pedido</h2><button class="icon-button" id="closeCart" aria-label="Fechar carrinho">×</button></div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="drawer-bottom">
+        <p class="cart-total"><span>Total estimado</span><strong id="cartTotal">R$ 0,00</strong></p>
+        <form id="checkoutForm">
+          <label for="customerName">Seu nome</label><input class="field" id="customerName" name="nome" required autocomplete="name">
+          <label for="customerPhone">Telefone</label><input class="field" id="customerPhone" name="telefone" required autocomplete="tel">
+          <label for="orderNotes">Observações (opcional)</label><textarea class="field" id="orderNotes" name="observacoes" rows="2"></textarea>
+          <button class="button button-primary button-full" type="submit">Enviar pedido pelo WhatsApp</button>
+          <p class="fine-print">O pedido será confirmado pela loja. Valores e estoque podem mudar.</p>
+        </form>
+      </div>
+    </aside>
+  </div>
+
+  <div class="modal" id="productModal" role="dialog" aria-modal="true" aria-label="Detalhes do produto"><div class="modal-card" id="productDetails"></div></div>
+  <div class="modal" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <section class="auth-card">
+      <header class="auth-heading"><div><p class="eyebrow">Acesso seguro</p><h2 id="authTitle">Entre na sua conta</h2></div><button class="icon-button" id="closeAuth" aria-label="Fechar login">×</button></header>
+      <div class="auth-tabs" role="tablist" aria-label="Tipo de acesso">
+        <button class="auth-tab active" type="button" data-auth-role="cliente" role="tab" aria-selected="true">Cliente</button>
+        <button class="auth-tab" type="button" data-auth-role="admin" role="tab" aria-selected="false">Administrador</button>
+      </div>
+      <div id="clientAuth">
+        <div class="auth-switch"><button class="text-button active" type="button" data-client-mode="login">Já tenho conta</button><button class="text-button" type="button" data-client-mode="signup">Criar conta</button></div>
+        <form class="auth-form" id="clientLoginForm">
+          <label for="clientLoginEmail">E-mail</label><input class="field" id="clientLoginEmail" name="email" type="email" autocomplete="email" required>
+          <label for="clientLoginPassword">Senha</label><input class="field" id="clientLoginPassword" name="senha" type="password" autocomplete="current-password" required>
+          <button class="button button-primary button-full" type="submit">Entrar como cliente</button>
+        </form>
+        <form class="auth-form" id="clientSignupForm" hidden>
+          <label for="clientName">Nome completo</label><input class="field" id="clientName" name="nome" autocomplete="name" minlength="2" required>
+          <label for="clientEmail">E-mail</label><input class="field" id="clientEmail" name="email" type="email" autocomplete="email" required>
+          <label for="clientPhone">Telefone (opcional)</label><input class="field" id="clientPhone" name="telefone" type="tel" autocomplete="tel">
+          <label for="clientPassword">Senha (mínimo 8 caracteres)</label><input class="field" id="clientPassword" name="senha" type="password" autocomplete="new-password" minlength="8" maxlength="72" required>
+          <button class="button button-primary button-full" type="submit">Criar conta</button>
+        </form>
+      </div>
+      <form class="auth-form" id="adminLoginForm" hidden>
+        <p class="muted">Acesso exclusivo da administração da loja.</p>
+        <label for="adminUser">Usuário administrativo</label><input class="field" id="adminUser" name="usuario" autocomplete="username" required>
+        <label for="adminPassword">Senha</label><input class="field" id="adminPassword" name="senha" type="password" autocomplete="current-password" required>
+        <button class="button button-primary button-full" type="submit">Entrar como administrador</button>
+      </form>
+      <p class="auth-feedback" id="authFeedback" role="status" aria-live="polite"></p>
+    </section>
+  </div>
+  <div class="modal" id="accountModal" role="dialog" aria-modal="true" aria-labelledby="accountTitle">
+    <section class="account-card">
+      <header class="auth-heading"><div><p class="eyebrow">Sua área</p><h2 id="accountTitle">Minha conta</h2></div><button class="icon-button" id="closeAccount" aria-label="Fechar conta">×</button></header>
+      <div id="accountContent"></div>
+      <button class="button button-light button-full" id="logoutButton" type="button">Sair da conta</button>
+    </section>
+  </div>
+  <div class="toast-region" id="toasts" aria-live="polite"></div>
+
+  <script>
+    const $ = (selector, root = document) => root.querySelector(selector);
+    const money = value => Number(value).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    const escapeHTML = value => String(value ?? "").replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[char]));
+    const state = { category:"", search:"", sort:"nome", available:false, page:1, pages:1, products:[], adminProducts:[], adminCategories:[], cart:JSON.parse(localStorage.getItem("rei-cart") || "[]"), user:JSON.parse(sessionStorage.getItem("rei-user") || "null") };
+
+    async function request(url, options = {}) {
+      const token = sessionStorage.getItem("rei-token");
+      const response = await fetch(url, { ...options, headers:{
+        "Content-Type":"application/json",
+        ...(token ? { Authorization:`Bearer ${token}` } : {}),
+        ...(options.headers || {})
+      } });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        const error = new Error(data.erro || "Não foi possível concluir a solicitação.");
+        error.status = response.status;
+        throw error;
+      }
+      return data;
+    }
+
+    function showToast(message) {
+      const toast = document.createElement("div");
+      toast.className = "toast";
+      toast.textContent = message;
+      $("#toasts").append(toast);
+      setTimeout(() => toast.remove(), 3200);
+    }
+
+    function renderAuthButtons() {
+      $("#openAuth").hidden = Boolean(state.user);
+      $("#openAccount").hidden = !state.user;
+      if (state.user?.tipo === "cliente") $("#openAccount").textContent = `Olá, ${state.user.nome.split(" ")[0]}`;
+      else if (state.user?.tipo === "admin") $("#openAccount").textContent = "Administração";
+    }
+
+    function openAuth(role = "cliente") {
+      $("#authModal").classList.add("open");
+      document.body.classList.add("no-scroll");
+      setAuthRole(role);
+      $("#authFeedback").textContent = "";
+    }
+
+    function closeAuth() {
+      $("#authModal").classList.remove("open");
+      document.body.classList.remove("no-scroll");
+    }
+
+    function setAuthRole(role) {
+      document.querySelectorAll("[data-auth-role]").forEach(button => {
+        const active = button.dataset.authRole === role;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-selected", String(active));
+      });
+      $("#clientAuth").hidden = role !== "cliente";
+      $("#adminLoginForm").hidden = role !== "admin";
+      $("#authFeedback").textContent = "";
+    }
+
+    function setClientMode(mode) {
+      const cadastro = mode === "signup";
+      $("#clientLoginForm").hidden = cadastro;
+      $("#clientSignupForm").hidden = !cadastro;
+      document.querySelectorAll("[data-client-mode]").forEach(button => button.classList.toggle("active", button.dataset.clientMode === mode));
+      $("#authFeedback").textContent = "";
+    }
+
+    async function finishLogin(result) {
+      sessionStorage.setItem("rei-token", result.token);
+      state.user = result.tipo === "admin"
+        ? { tipo:"admin", nome:result.usuario }
+        : { ...result.cliente, tipo:"cliente" };
+      sessionStorage.setItem("rei-user", JSON.stringify(state.user));
+      renderAuthButtons();
+      closeAuth();
+      if (state.user.tipo === "cliente") {
+        $("#customerName").value = state.user.nome;
+        if (state.user.telefone) $("#customerPhone").value = state.user.telefone;
+      }
+      await openAccount();
+    }
+
+    async function submitAuth(event, endpoint) {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const button = form.querySelector("button[type=submit]");
+      button.disabled = true;
+      button.textContent = "Aguarde...";
+      $("#authFeedback").textContent = "";
+      try {
+        const result = await request(endpoint, { method:"POST", body:JSON.stringify(Object.fromEntries(new FormData(form))) });
+        form.reset();
+        await finishLogin(result);
+      } catch (error) {
+        $("#authFeedback").textContent = error.message;
+      } finally {
+        button.disabled = false;
+        button.textContent = form.id === "clientSignupForm" ? "Criar conta"
+          : form.id === "clientLoginForm" ? "Entrar como cliente" : "Entrar como administrador";
+      }
+    }
+
+    const orderStatuses = ["novo", "em separação", "pronto", "entregue", "cancelado"];
+
+    function renderAdminShell(content) {
+      $("#accountModal .account-card").classList.add("admin-account-card");
+      content.innerHTML = `<p class="muted">Olá, ${escapeHTML(state.user.nome)}. Sessão administrativa ativa.</p>
+        <nav class="admin-tabs" aria-label="Gerenciamento da loja">
+          <button class="admin-tab active" type="button" data-admin-tab="overview" aria-pressed="true">Resumo</button>
+          <button class="admin-tab" type="button" data-admin-tab="products" aria-pressed="false">Produtos e estoque</button>
+          <button class="admin-tab" type="button" data-admin-tab="orders" aria-pressed="false">Pedidos</button>
+          <button class="admin-tab" type="button" data-admin-tab="security" aria-pressed="false">Segurança</button>
+        </nav>
+        <section id="adminPanelContent" aria-live="polite"></section>`;
+      return renderAdminTab("overview");
+    }
+
+    async function renderAdminTab(tab) {
+      if (state.user?.tipo !== "admin") return;
+      document.querySelectorAll("[data-admin-tab]").forEach(button => {
+        const active = button.dataset.adminTab === tab;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+      const panel = $("#adminPanelContent");
+      panel.innerHTML = '<p class="muted">Carregando...</p>';
+      try {
+        if (tab === "overview") {
+          const [dashboard, orders] = await Promise.all([
+            request("/api/dashboard"),
+            request("/api/pedidos")
+          ]);
+          panel.innerHTML = `<div class="account-metrics admin-metrics">
+              <article><span>Produtos cadastrados</span><strong>${dashboard.totalProdutos}</strong></article>
+              <article><span>Produtos esgotados</span><strong>${dashboard.produtosEsgotados}</strong></article>
+              <article><span>Estoque baixo</span><strong>${dashboard.estoqueBaixo}</strong></article>
+              <article><span>Pedidos hoje</span><strong>${dashboard.pedidosDia}</strong></article>
+              <article><span>Faturamento de hoje</span><strong>${money(dashboard.faturamentoDia)}</strong></article>
+            </div>
+            <div class="admin-section-heading"><h3>Pedidos recentes</h3>
+              <button class="button button-light" type="button" data-admin-tab="orders">Ver pedidos</button></div>
+            ${renderOrderCards(orders.slice(0, 4))}`;
+        } else if (tab === "products") {
+          const [categories, result] = await Promise.all([
+            request("/api/categorias"),
+            request("/api/admin/produtos")
+          ]);
+          state.adminCategories = categories;
+          state.adminProducts = result;
+          panel.innerHTML = `<div class="admin-section-heading"><div><h3>Produtos e estoque</h3>
+              <p class="muted">${result.length} produtos cadastrados</p></div>
+              <button class="button button-primary" type="button" id="adminAddProduct">Novo produto</button></div>
+            <form class="admin-product-form" id="adminProductForm" hidden>
+              <h4 id="adminProductFormTitle">Novo produto</h4>
+              <div class="admin-form-grid">
+                <label>Nome<input class="field" name="nome" maxlength="150" required></label>
+                <label>Categoria<select class="field" name="categoria_id" required>${categories.map(category => `<option value="${category.id}">${escapeHTML(category.nome)}</option>`).join("")}</select></label>
+                <label>Preço (R$)<input class="field" name="preco" type="number" min="0" step="0.01" required></label>
+                <label>Estoque<input class="field" name="estoque" type="number" min="0" step="1" required></label>
+                <label>Unidade<select class="field" name="unidade" required><option value="un">Unidade</option><option value="pacote">Pacote</option><option value="caixa">Caixa</option><option value="fardo">Fardo</option></select></label>
+                <label>Imagem (caminho /img/ ou URL HTTPS)<input class="field" name="imagem" maxlength="500" placeholder="/img/pote.svg"></label>
+                <label class="admin-field-wide">Descrição<textarea class="field" name="descricao" rows="2" maxlength="2000"></textarea></label>
+                <label class="admin-active-field"><input type="checkbox" name="ativo" checked> Produto visível no catálogo</label>
+              </div>
+              <div class="button-row admin-form-actions">
+                <button class="button button-primary" type="submit">Salvar produto</button>
+                <button class="button button-light" type="button" id="cancelAdminProduct">Cancelar</button>
+              </div>
+            </form>
+            <label class="sr-only" for="adminProductSearch">Buscar produtos no painel</label>
+            <input class="field admin-search" id="adminProductSearch" type="search" placeholder="Buscar produto...">
+            <div class="admin-product-list">${result.length ? result.map(product => `
+              <article class="admin-product-card" data-admin-product-card="${Number(product.id)}">
+                <div class="admin-product-info">
+                  <strong>${escapeHTML(product.nome)}</strong>
+                  <span>${escapeHTML(product.categoria)} · ${money(product.preco)} / ${escapeHTML(product.unidade)}</span>
+                  <span>Estoque: ${Number(product.estoque)} · ${product.ativo ? "Visível" : "Oculto"}</span>
+                </div>
+                <button class="button button-light admin-edit-button" type="button" data-edit-product="${Number(product.id)}">Editar</button>
+              </article>`).join("") : '<p class="empty-state">Nenhum produto cadastrado.</p>'}</div>`;
+        } else if (tab === "orders") {
+          const orders = await request("/api/pedidos");
+          panel.innerHTML = `<div class="admin-section-heading"><div><h3>Pedidos</h3>
+              <p class="muted">${orders.length} pedidos registrados</p></div>
+              <label class="admin-order-filter">Filtrar status
+                <select class="field" id="adminOrderFilter"><option value="">Todos</option>${orderStatuses.map(status => `<option value="${escapeHTML(status)}">${escapeHTML(status)}</option>`).join("")}</select>
+              </label></div>
+            <div class="admin-order-list">${renderOrderCards(orders)}</div>`;
+        } else if (tab === "security") {
+          panel.innerHTML = `<section class="admin-security-card"><h3>Alterar senha administrativa</h3>
+            <p class="muted">Use uma senha única com pelo menos 12 caracteres. A alteração é protegida pela sua sessão atual.</p>
+            <form class="auth-form" id="adminPasswordForm">
+              <label for="currentAdminPassword">Senha atual</label>
+              <input class="field" id="currentAdminPassword" name="senha_atual" type="password" minlength="6" maxlength="72" autocomplete="current-password" required>
+              <label for="newAdminPassword">Nova senha</label>
+              <input class="field" id="newAdminPassword" name="nova_senha" type="password" minlength="12" maxlength="72" autocomplete="new-password" required>
+              <label for="confirmAdminPassword">Confirmar nova senha</label>
+              <input class="field" id="confirmAdminPassword" name="confirmar_senha" type="password" minlength="12" maxlength="72" autocomplete="new-password" required>
+              <button class="button button-primary" type="submit">Atualizar senha</button>
+              <p class="auth-feedback" id="adminPasswordFeedback" role="status" aria-live="polite"></p>
+            </form></section>`;
+        }
+      } catch (error) {
+        if (error.status === 401) {
+          logout();
+          return;
+        }
+        panel.innerHTML = `<p class="auth-feedback">${escapeHTML(error.message)}</p>`;
+      }
+    }
+
+    function renderOrderCards(orders) {
+      if (!orders.length) return '<p class="empty-state">Nenhum pedido encontrado.</p>';
+      return orders.map(order => {
+        const terminal = ["entregue", "cancelado"].includes(order.status);
+        const phone = String(order.telefone_cliente || "").replace(/[^\d+]/g, "");
+        return `<article class="admin-order-card" data-admin-order="${Number(order.id)}">
+          <div class="admin-order-heading"><div><strong>Pedido #${Number(order.id)} · ${escapeHTML(order.nome_cliente)}</strong>
+            <span class="muted">${escapeHTML(order.criado_em)}</span></div><strong>${money(order.total)}</strong></div>
+          <a class="admin-order-phone" href="tel:${escapeHTML(phone)}">${escapeHTML(order.telefone_cliente)}</a>
+          <ul class="admin-order-items">${(order.itens || []).map(item => `<li>${Number(item.quantidade)} × ${escapeHTML(item.nome_produto)} — ${money(item.subtotal)}</li>`).join("")}</ul>
+          ${order.observacoes ? `<p class="admin-order-notes"><strong>Observação:</strong> ${escapeHTML(order.observacoes)}</p>` : ""}
+          ${terminal ? `<span class="order-status">${escapeHTML(order.status)} · status final</span>` : `
+            <div class="admin-order-actions"><label>Status do pedido
+              <select class="field" data-order-status="${Number(order.id)}">${orderStatuses.map(status => `<option value="${escapeHTML(status)}" ${status === order.status ? "selected" : ""}>${escapeHTML(status)}</option>`).join("")}</select>
+            </label><button class="button button-primary" type="button" data-save-order="${Number(order.id)}">Atualizar status</button></div>`}
+        </article>`;
+      }).join("");
+    }
+
+    function showAdminProductForm(product = null) {
+      const form = $("#adminProductForm");
+      if (!form) return;
+      form.reset();
+      form.dataset.productId = product ? String(product.id) : "";
+      $("#adminProductFormTitle").textContent = product ? `Editar: ${product.nome}` : "Novo produto";
+      if (product) {
+        for (const field of ["nome", "categoria_id", "preco", "estoque", "unidade", "imagem", "descricao"]) {
+          form.elements[field].value = product[field] ?? "";
+        }
+        form.elements.ativo.checked = Boolean(product.ativo);
+      } else {
+        form.elements.ativo.checked = true;
+      }
+      form.hidden = false;
+      form.scrollIntoView({ behavior:"smooth", block:"nearest" });
+      form.elements.nome.focus();
+    }
+
+    async function handleAdminClick(event) {
+      const tab = event.target.closest("[data-admin-tab]");
+      if (tab) {
+        await renderAdminTab(tab.dataset.adminTab);
+        return;
+      }
+      if (event.target.closest("#adminAddProduct")) {
+        showAdminProductForm();
+        return;
+      }
+      if (event.target.closest("#cancelAdminProduct")) {
+        $("#adminProductForm").hidden = true;
+        return;
+      }
+      const editButton = event.target.closest("[data-edit-product]");
+      if (editButton) {
+        const product = state.adminProducts.find(item => item.id === Number(editButton.dataset.editProduct));
+        if (product) showAdminProductForm(product);
+        return;
+      }
+      const saveOrderButton = event.target.closest("[data-save-order]");
+      if (saveOrderButton) {
+        const orderId = Number(saveOrderButton.dataset.saveOrder);
+        const status = $(`[data-order-status="${orderId}"]`).value;
+        saveOrderButton.disabled = true;
+        try {
+          await request(`/api/pedidos/${orderId}/status`, {
+            method:"PATCH",
+            body:JSON.stringify({ status })
+          });
+          showToast(`Status do pedido #${orderId} atualizado.`);
+          await renderAdminTab("orders");
+        } catch (error) {
+          saveOrderButton.disabled = false;
+          showToast(error.message);
+        }
+      }
+    }
+
+    async function handleAdminSubmit(event) {
+      const form = event.target;
+      if (form.id === "adminProductForm") {
+        event.preventDefault();
+        const data = Object.fromEntries(new FormData(form));
+        const productId = form.dataset.productId;
+        const payload = {
+          nome:data.nome,
+          categoria_id:Number(data.categoria_id),
+          descricao:data.descricao,
+          preco:Number(data.preco),
+          estoque:Number(data.estoque),
+          unidade:data.unidade,
+          imagem:data.imagem,
+          ativo:form.elements.ativo.checked
+        };
+        const button = form.querySelector('button[type="submit"]');
+        button.disabled = true;
+        try {
+          await request(productId ? `/api/produtos/${productId}` : "/api/produtos", {
+            method:productId ? "PUT" : "POST",
+            body:JSON.stringify(payload)
+          });
+          showToast(productId ? "Produto atualizado." : "Produto cadastrado.");
+          await renderAdminTab("products");
+          loadProducts();
+        } catch (error) {
+          showToast(error.message);
+          button.disabled = false;
+        }
+      } else if (form.id === "adminPasswordForm") {
+        event.preventDefault();
+        const feedback = $("#adminPasswordFeedback");
+        const button = form.querySelector('button[type="submit"]');
+        const values = Object.fromEntries(new FormData(form));
+        if (values.nova_senha !== values.confirmar_senha) {
+          feedback.textContent = "Confirme a nova senha.";
+          return;
+        }
+        delete values.confirmar_senha;
+        button.disabled = true;
+        feedback.textContent = "";
+        try {
+          await request("/api/auth/admin/senha", {
+            method:"POST",
+            body:JSON.stringify(values)
+          });
+          form.reset();
+          feedback.textContent = "Senha alterada com sucesso.";
+        } catch (error) {
+          feedback.textContent = error.message;
+        } finally {
+          button.disabled = false;
+        }
+      }
+    }
+
+    async function openAccount() {
+      $("#accountModal").classList.add("open");
+      document.body.classList.add("no-scroll");
+      const content = $("#accountContent");
+      content.innerHTML = '<p class="muted">Carregando sua área...</p>';
+      try {
+        if (state.user.tipo === "admin") {
+          await renderAdminShell(content);
+        } else {
+          $("#accountModal .account-card").classList.remove("admin-account-card");
+          const [cliente, pedidos] = await Promise.all([
+            request("/api/clientes/me"),
+            request("/api/clientes/me/pedidos")
+          ]);
+          state.user.nome = cliente.nome;
+          state.user.telefone = cliente.telefone;
+          sessionStorage.setItem("rei-user", JSON.stringify(state.user));
+          $("#customerName").value = cliente.nome;
+          if (cliente.telefone) $("#customerPhone").value = cliente.telefone;
+          content.innerHTML = `<p><strong>${escapeHTML(cliente.nome)}</strong><br><span class="muted">${escapeHTML(cliente.email)}</span></p>
+            <h3>Meus pedidos</h3>${pedidos.length ? pedidos.map(pedido => `<article class="order-history-card">
+              <div class="order-history-heading"><strong>Pedido #${pedido.id}</strong><span class="order-status">${escapeHTML(pedido.status)}</span></div>
+              <span class="muted">${escapeHTML(pedido.criado_em)}</span>
+              <ul>${pedido.itens.map(item => `<li>${escapeHTML(item.nome_produto)} — ${item.quantidade} × ${money(item.preco_unitario)}</li>`).join("")}</ul>
+              <strong>Total ${money(pedido.total)}</strong>
+            </article>`).join("") : '<p class="empty-state">Seus pedidos vinculados à conta aparecerão aqui.</p>'}`;
+          renderAuthButtons();
+        }
+      } catch (error) {
+        if (error.status === 401) {
+          sessionStorage.removeItem("rei-token");
+          sessionStorage.removeItem("rei-user");
+          state.user = null;
+          renderAuthButtons();
+        }
+        content.innerHTML = `<p class="auth-feedback">${escapeHTML(error.message)}</p>`;
+      }
+    }
+
+    function logout() {
+      sessionStorage.removeItem("rei-token");
+      sessionStorage.removeItem("rei-user");
+      state.user = null;
+      $("#accountModal .account-card").classList.remove("admin-account-card");
+      renderAuthButtons();
+      $("#accountModal").classList.remove("open");
+      document.body.classList.remove("no-scroll");
+      showToast("Você saiu da sua conta.");
+    }
+
+    function renderCategories(categories) {
+      $("#categories").innerHTML = `<button class="chip active" data-category="">Todas</button>` +
+        categories.map(category => `<button class="chip" data-category="${escapeHTML(category.slug)}">${escapeHTML(category.nome)}</button>`).join("");
+    }
+
+    function productCard(product, index) {
+      const stock = Number(product.estoque);
+      const stockClass = stock === 0 ? "out" : stock <= 5 ? "low" : "in";
+      const stockText = stock === 0 ? "Esgotado" : stock <= 5 ? `Restam ${stock}` : "Em estoque";
+      const image = escapeHTML(product.imagem || "/img/pote.svg");
+      const unit = escapeHTML(product.unidade || "un");
+      return `<article class="product-card ${stock === 0 ? "is-out" : ""}" style="--delay:${Math.min(index, 6) * 45}ms" data-product="${Number(product.id)}">
+        <button class="product-open" data-details="${Number(product.id)}" aria-label="Detalhes de ${escapeHTML(product.nome)}">
+          <span class="product-image"><img src="${image}" alt="${escapeHTML(product.nome)}" loading="lazy"></span>
+          <span class="product-category">${escapeHTML(product.categoria)}</span>
+          <strong class="product-name">${escapeHTML(product.nome)}</strong>
+          <span class="product-price">${money(product.preco)}</span>
+          <span class="product-unit">por ${unit}</span>
+          <span class="stock ${stockClass}">${stockText}</span>
+        </button>
+        <button class="button button-primary add-button" data-add="${Number(product.id)}" ${stock === 0 ? "disabled" : ""}>Adicionar ao pedido</button>
+      </article>`;
+    }
+
+    async function loadProducts(reset = true) {
+      const grid = $("#products");
+      if (reset) {
+        state.page = 1;
+        grid.innerHTML = '<div class="loading-card"></div><div class="loading-card"></div><div class="loading-card"></div><div class="loading-card"></div>';
+      }
+      const params = new URLSearchParams({ pagina:state.page, limite:12, ordem:state.sort });
+      if (state.category) params.set("categoria", state.category);
+      if (state.search) params.set("busca", state.search);
+      if (state.available) params.set("disponiveis", "true");
+      try {
+        const result = await request(`/api/produtos?${params}`);
+        state.products = reset ? result.itens : state.products.concat(result.itens);
+        state.pages = result.paginas;
+        grid.innerHTML = state.products.length
+          ? state.products.map(productCard).join("")
+          : '<p class="empty-state">Nenhum produto encontrado. Tente alterar os filtros.</p>';
+        $("#loadMore").hidden = state.page >= state.pages;
+      } catch (error) {
+        grid.innerHTML = `<div class="empty-state"><h3>Catálogo indisponível</h3><p>${escapeHTML(error.message)}</p><button class="button button-light" id="retryProducts">Tentar novamente</button></div>`;
+        $("#loadMore").hidden = true;
+      }
+    }
+
+    function persistCart() {
+      localStorage.setItem("rei-cart", JSON.stringify(state.cart));
+      renderCart();
+    }
+
+    function addToCart(product, quantity = 1) {
+      const item = state.cart.find(entry => entry.id === product.id);
+      const next = (item?.quantidade || 0) + quantity;
+      if (next > Number(product.estoque)) {
+        showToast("A quantidade escolhida excede o estoque disponível.");
+        return;
+      }
+      if (item) item.quantidade = next;
+      else state.cart.push({ id:product.id, nome:product.nome, preco:product.preco, estoque:product.estoque, imagem:product.imagem, unidade:product.unidade, quantidade });
+      persistCart();
+      $("#openCart").classList.remove("pulse");
+      void $("#openCart").offsetWidth;
+      $("#openCart").classList.add("pulse");
+      showToast(`${product.nome} adicionado ao pedido.`);
+    }
+
+    function renderCart() {
+      const count = state.cart.reduce((sum, item) => sum + item.quantidade, 0);
+      const total = state.cart.reduce((sum, item) => sum + item.preco * item.quantidade, 0);
+      $("#cartCount").textContent = count;
+      $("#cartTotal").textContent = money(total);
+      $("#cartItems").innerHTML = state.cart.length ? state.cart.map(item => `
+        <article class="cart-item">
+          <img src="${escapeHTML(item.imagem || "/img/pote.svg")}" alt="" loading="lazy">
+          <div class="cart-item-info"><strong>${escapeHTML(item.nome)}</strong><span>${money(item.preco)}${item.unidade ? ` / ${escapeHTML(item.unidade)}` : ""}</span>
+            <div class="quantity-control">
+              <button data-quantity="-1" data-id="${item.id}" aria-label="Diminuir quantidade">−</button>
+              <span>${item.quantidade}</span>
+              <button data-quantity="1" data-id="${item.id}" aria-label="Aumentar quantidade">+</button>
+            </div>
+          </div>
+          <button class="remove-item" data-remove="${item.id}" aria-label="Remover ${escapeHTML(item.nome)}">×</button>
+        </article>`).join("") : '<p class="empty-state">Seu pedido ainda está vazio.</p>';
+    }
+
+    async function showDetails(id) {
+      try {
+        const product = await request(`/api/produtos/${id}`);
+        const stock = Number(product.estoque);
+        const status = stock === 0 ? ["Esgotado","out"] : stock <= 5 ? [`Restam ${stock}`,"low"] : ["Em estoque","in"];
+        $("#productDetails").innerHTML = `<button class="icon-button modal-close" id="closeProduct" aria-label="Fechar">×</button>
+          <img class="detail-image" src="${escapeHTML(product.imagem || "/img/pote.svg")}" alt="${escapeHTML(product.nome)}">
+          <p class="product-category">${escapeHTML(product.categoria)}</p><h2>${escapeHTML(product.nome)}</h2>
+          <p class="muted">${escapeHTML(product.descricao || "")}</p><p class="detail-price">${money(product.preco)} / ${escapeHTML(product.unidade || "un")}</p>
+          <span class="stock ${status[1]}">${status[0]}</span>
+          ${stock > 0 ? `<div class="detail-add"><label for="detailQuantity">Quantidade</label><input class="field" id="detailQuantity" type="number" min="1" max="${stock}" value="1"><button class="button button-primary" id="detailAdd" data-id="${product.id}">Adicionar</button></div>` : ""}`;
+        $("#productModal").classList.add("open");
+        $("#closeProduct").addEventListener("click", () => $("#productModal").classList.remove("open"));
+      } catch (error) { showToast(error.message); }
+    }
+
+    function updateOpenStatus() {
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone:"America/Sao_Paulo", weekday:"short", hour:"2-digit", minute:"2-digit", hourCycle:"h23"
+      }).formatToParts(new Date());
+      const values = Object.fromEntries(parts.map(part => [part.type, part.value]));
+      const weekdays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+      const weekdayNames = ["domingo","segunda-feira","terça-feira","quarta-feira","quinta-feira","sexta-feira","sábado"];
+      const day = weekdays.indexOf(values.weekday);
+      const minutes = Number(values.hour) * 60 + Number(values.minute);
+      const open = day >= 1 && day <= 5 ? minutes >= 480 && minutes < 1080 : day === 6 && minutes >= 480 && minutes < 900;
+      let nextOpen = "";
+      if (!open) {
+        if (day >= 1 && day <= 5 && minutes < 480) nextOpen = "Abre hoje às 8h.";
+        else if (day >= 1 && day <= 4) nextOpen = "Abre amanhã às 8h.";
+        else if (day === 5) nextOpen = "Abre sábado às 8h.";
+        else nextOpen = "Abre segunda-feira às 8h.";
+      }
+
+      const closingTime = day === 6 ? "15h" : "18h";
+      const todaySchedule = day === 0
+        ? "Hoje (domingo): fechado"
+        : `Hoje (${weekdayNames[day]}): 8h às ${closingTime}`;
+      const statusCard = $("#hoursStatusCard");
+      $("#openStatus").textContent = open ? "Aberto agora" : "Fechado agora";
+      $("#openStatusDetail").textContent = open
+        ? `Atendimento até às ${closingTime}.`
+        : nextOpen;
+      $("#todayHours").textContent = todaySchedule;
+      statusCard.classList.toggle("is-open", open);
+      statusCard.classList.toggle("is-closed", !open);
+    }
+
+    $("#menuToggle").addEventListener("click", event => {
+      const expanded = event.currentTarget.getAttribute("aria-expanded") === "true";
+      event.currentTarget.setAttribute("aria-expanded", String(!expanded));
+      $("#navLinks").classList.toggle("open", !expanded);
+    });
+    $("#navLinks").addEventListener("click", event => {
+      if (event.target.closest("a")) {
+        $("#navLinks").classList.remove("open");
+        $("#menuToggle").setAttribute("aria-expanded", "false");
+      }
+    });
+    $("#openAuth").addEventListener("click", () => openAuth());
+    $("#openAccount").addEventListener("click", openAccount);
+    $("#closeAuth").addEventListener("click", closeAuth);
+    $("#closeAccount").addEventListener("click", () => {
+      $("#accountModal").classList.remove("open");
+      document.body.classList.remove("no-scroll");
+    });
+    $("#logoutButton").addEventListener("click", logout);
+    $("#authModal").addEventListener("click", event => { if (event.target.id === "authModal") closeAuth(); });
+    $("#accountModal").addEventListener("click", event => {
+      if (event.target.id === "accountModal") {
+        event.currentTarget.classList.remove("open");
+        document.body.classList.remove("no-scroll");
+      }
+    });
+    document.querySelectorAll("[data-auth-role]").forEach(button => button.addEventListener("click", () => setAuthRole(button.dataset.authRole)));
+    document.querySelectorAll("[data-client-mode]").forEach(button => button.addEventListener("click", () => setClientMode(button.dataset.clientMode)));
+    $("#clientLoginForm").addEventListener("submit", event => submitAuth(event, "/api/auth/clientes/login"));
+    $("#clientSignupForm").addEventListener("submit", event => submitAuth(event, "/api/auth/clientes/cadastro"));
+    $("#adminLoginForm").addEventListener("submit", event => submitAuth(event, "/api/auth/login"));
+    $("#accountContent").addEventListener("click", event => handleAdminClick(event));
+    $("#accountContent").addEventListener("submit", event => handleAdminSubmit(event));
+    $("#accountContent").addEventListener("input", event => {
+      if (event.target.id !== "adminProductSearch") return;
+      const search = event.target.value.trim().toLocaleLowerCase("pt-BR");
+      document.querySelectorAll("[data-admin-product-card]").forEach(card => {
+        card.hidden = !card.textContent.toLocaleLowerCase("pt-BR").includes(search);
+      });
+    });
+    $("#accountContent").addEventListener("change", event => {
+      if (event.target.id !== "adminOrderFilter") return;
+      const selectedStatus = event.target.value;
+      document.querySelectorAll("[data-admin-order]").forEach(card => {
+        const status = card.querySelector(".order-status")?.textContent.split(" ·")[0]
+          || card.querySelector("[data-order-status]")?.value;
+        card.hidden = Boolean(selectedStatus && status !== selectedStatus);
+      });
+    });
+
+    function openCart() {
+      $("#cartOverlay").classList.add("open");
+      $("#cartOverlay").setAttribute("aria-hidden", "false");
+      document.body.classList.add("no-scroll");
+    }
+    function closeCart() {
+      $("#cartOverlay").classList.remove("open");
+      $("#cartOverlay").setAttribute("aria-hidden", "true");
+      document.body.classList.remove("no-scroll");
+    }
+    $("#openCart").addEventListener("click", openCart);
+    $("#closeCart").addEventListener("click", closeCart);
+    $("#cartOverlay").addEventListener("click", event => { if (event.target.id === "cartOverlay") closeCart(); });
+
+    $("#categories").addEventListener("click", event => {
+      const button = event.target.closest("[data-category]");
+      if (!button) return;
+      state.category = button.dataset.category;
+      $("#categories").querySelectorAll(".chip").forEach(chip => chip.classList.toggle("active", chip === button));
+      loadProducts();
+    });
+    $("#products").addEventListener("click", event => {
+      const add = event.target.closest("[data-add]");
+      const details = event.target.closest("[data-details]");
+      if (add) {
+        const product = state.products.find(item => item.id === Number(add.dataset.add));
+        if (product) addToCart(product);
+      } else if (details) showDetails(details.dataset.details);
+      if (event.target.id === "retryProducts") loadProducts();
+    });
+    $("#loadMore").addEventListener("click", () => { state.page++; loadProducts(false); });
+    $("#searchProducts").addEventListener("input", event => {
+      clearTimeout(window.searchTimer);
+      window.searchTimer = setTimeout(() => { state.search = event.target.value.trim(); loadProducts(); }, 300);
+    });
+    $("#sortProducts").addEventListener("change", event => { state.sort = event.target.value; loadProducts(); });
+    $("#availableOnly").addEventListener("change", event => { state.available = event.target.checked; loadProducts(); });
+
+    $("#cartItems").addEventListener("click", event => {
+      const change = event.target.closest("[data-quantity]");
+      const remove = event.target.closest("[data-remove]");
+      if (change) {
+        const item = state.cart.find(entry => entry.id === Number(change.dataset.id));
+        if (!item) return;
+        const quantity = item.quantidade + Number(change.dataset.quantity);
+        if (quantity < 1) state.cart = state.cart.filter(entry => entry !== item);
+        else if (quantity <= item.estoque) item.quantidade = quantity;
+        else showToast("Quantidade máxima em estoque atingida.");
+        persistCart();
+      }
+      if (remove) {
+        state.cart = state.cart.filter(item => item.id !== Number(remove.dataset.remove));
+        persistCart();
+      }
+    });
+    $("#productDetails").addEventListener("click", event => {
+      if (event.target.id === "detailAdd") {
+        const product = state.products.find(item => item.id === Number(event.target.dataset.id));
+        const quantity = Number($("#detailQuantity").value);
+        if (product && Number.isInteger(quantity) && quantity > 0 && quantity <= product.estoque) {
+          addToCart(product, quantity);
+          $("#productModal").classList.remove("open");
+        } else showToast("Informe uma quantidade válida para o estoque.");
+      }
+    });
+
+    $("#checkoutForm").addEventListener("submit", async event => {
+      event.preventDefault();
+      if (!state.cart.length) return showToast("Adicione produtos ao pedido antes de continuar.");
+      const form = event.currentTarget;
+      const data = Object.fromEntries(new FormData(form));
+      if (!data.nome.trim() || !data.telefone.trim()) return showToast("Preencha seu nome e telefone.");
+      const button = form.querySelector("button[type=submit]");
+      button.disabled = true;
+      button.textContent = "Enviando pedido...";
+      try {
+        const order = await request("/api/pedidos", {
+          method:"POST",
+          body:JSON.stringify({ nome:data.nome, telefone:data.telefone, observacoes:data.observacoes, itens:state.cart.map(item => ({ produto_id:item.id, quantidade:item.quantidade })) })
+        });
+        state.cart = [];
+        persistCart();
+        form.reset();
+        closeCart();
+        showToast(`Pedido #${order.id} criado. Abrindo WhatsApp...`);
+        window.location.href = order.linkWhatsApp;
+      } catch (error) {
+        showToast(error.message);
+        if (error.status === 409) loadProducts();
+      } finally {
+        button.disabled = false;
+        button.textContent = "Enviar pedido pelo WhatsApp";
+      }
+    });
+
+    $("#productModal").addEventListener("click", event => { if (event.target.id === "productModal") event.currentTarget.classList.remove("open"); });
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        closeCart();
+        closeAuth();
+        $("#accountModal").classList.remove("open");
+        document.body.classList.remove("no-scroll");
+        $("#productModal").classList.remove("open");
+      }
+    });
+
+    const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add("visible"); revealObserver.unobserve(entry.target); }
+    }), { threshold:0.12 });
+    document.querySelectorAll(".reveal").forEach(element => revealObserver.observe(element));
+
+    async function start() {
+      $("#year").textContent = new Date().getFullYear();
+      renderCart();
+      renderAuthButtons();
+      updateOpenStatus();
+      setInterval(updateOpenStatus, 60000);
+      try { renderCategories(await request("/api/categorias")); }
+      catch { $("#categories").innerHTML = ""; }
+      loadProducts();
+    }
+    start();
+  </script>
+</body>
+</html>
