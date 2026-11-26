@@ -922,3 +922,49 @@
   </script>
 </body>
 </html>
+
+
+<script>
+  (() => {
+      // Show illustrative items when the static Vercel deployment has no catalog API.
+      const grid = document.getElementById("products");
+      if (!grid) return;
+      const items = [
+            ["🥤", "Descartáveis", "Copo descartável 200 ml"],
+            ["🍽️", "Descartáveis", "Prato descartável"],
+            ["🥡", "Embalagens para alimentos", "Marmitex de alumínio"],
+            ["🫙", "Embalagens para alimentos", "Pote com tampa"],
+            ["📦", "Caixas e papelão", "Caixa para bolo"],
+            ["🛍️", "Sacolas e sacos", "Sacola plástica"],
+            ["🧻", "Fitas e filmes", "Filme PVC"],
+            ["🧤", "Higiene e limpeza", "Luvas descartáveis"]
+          ];
+      const showDemo = () => {
+            if (grid.querySelector(".demo-product-card")) return;
+            const error = grid.querySelector(".empty-state h3");
+            if (!error || error.textContent.trim() !== "Catálogo indisponível") return;
+            const notice = document.createElement("p");
+            notice.setAttribute("role", "status");
+            notice.textContent = "Catálogo de demonstração: itens ilustrativos, sem preços ou estoque reais.";
+            notice.style.cssText = "grid-column:1/-1;margin:16px 0;border:1px solid #e8c879;border-radius:14px;padding:14px 16px;background:#fff8df;color:#51400e";
+            grid.before(notice);
+            grid.innerHTML = items.map(([icon, category, name], i) => `
+                  <article class="product-card demo-product-card" style="--delay:${i * 45}ms">
+                          <div class="product-image" aria-hidden="true"><span style="font-size:4rem">${icon}</span></div>
+                                  <span class="product-category">${category}</span>
+                                          <strong class="product-name">${name}</strong>
+                                                  <span class="product-price">Consulte a loja</span>
+                                                          <span class="product-unit">Preço e disponibilidade sob consulta</span>
+                                                                  <span class="stock demo">Item ilustrativo</span>
+                                                                          <button class="button button-light add-button" type="button" disabled>Apenas demonstração</button>
+                                                                                </article>`).join("");
+            document.querySelectorAll(".catalog-tools input, .catalog-tools select").forEach(control => control.disabled = true);
+            ["openAuth", "openCart"].forEach(id => { const control = document.getElementById(id); if (control) control.hidden = true; });
+            const loadMore = document.getElementById("loadMore");
+            if (loadMore) loadMore.hidden = true;
+      };
+      new MutationObserver(showDemo).observe(grid, { childList: true });
+      showDemo();
+  })();
+</script>
+
