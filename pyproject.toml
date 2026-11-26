@@ -1,0 +1,5 @@
+[tool.vercel]
+entrypoint = "backend/app.py"
+
+[tool.vercel.scripts]
+build = "node build-vercel-assets.js"
